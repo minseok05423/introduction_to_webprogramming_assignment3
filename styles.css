@@ -1,0 +1,1236 @@
+/* 구글 폰트 불러오기 */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap");
+
+/* CSS 변수 - 따뜻하고 아늑한 색상 팔레트 */
+:root {
+  /* 따뜻한 베이지/크림 계열 */
+  --warm-cream: #fff8f0;
+  --soft-beige: #f5efe7;
+  --light-peach: #faf0e6;
+
+  /* 부드러운 브라운 계열 */
+  --soft-brown: #a8937f;
+  --medium-brown: #8b7355;
+  --deep-brown: #6b5d52;
+  --text-dark: #3e3428;
+
+  /* 자연스러운 그린 계열 */
+  --soft-green: #9fb89d;
+  --sage-green: #87a96b;
+  --deep-forest: #4a6156;
+
+  /* 포인트 컬러 */
+  --warm-terracotta: #d4a373;
+  --sunset-peach: #f4d5c3;
+  --dusty-rose: #e9c46a;
+
+  /* 그림자와 효과 */
+  --shadow-soft: rgba(62, 52, 40, 0.1);
+  --shadow-medium: rgba(62, 52, 40, 0.15);
+  --shadow-strong: rgba(62, 52, 40, 0.2);
+
+  /* 애니메이션 */
+  --transition-smooth: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-quick: all 0.3s ease;
+}
+
+/* 기본 리셋 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 전체 페이지 스타일 */
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  line-height: 1.8;
+  color: var(--text-dark);
+  background: linear-gradient(
+    180deg,
+    var(--warm-cream) 0%,
+    var(--light-peach) 100%
+  );
+  font-weight: 400;
+}
+
+/* 타이포그래피 */
+h1,
+h2,
+h3 {
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 3.2rem;
+  color: var(--deep-brown);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--deep-brown);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--medium-brown);
+  margin-bottom: 1.5rem;
+}
+
+/* 헤더 스타일 */
+header {
+  text-align: center;
+  padding: 5rem 2rem 4rem;
+  background: linear-gradient(
+    135deg,
+    var(--sunset-peach) 0%,
+    var(--warm-cream) 50%,
+    var(--soft-beige) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* 헤더에 수채화 느낌의 배경 효과 */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(244, 213, 195, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(212, 163, 115, 0.2) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 70%,
+      rgba(159, 184, 157, 0.2) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+header * {
+  position: relative;
+  z-index: 1;
+}
+
+.exhibition-subtitle {
+  font-style: italic;
+  color: var(--soft-brown);
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.artist-name {
+  font-style: bold;
+  color: var(--deep-brown);
+  margin: 1.5rem auto;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.exhibition-description {
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+  color: var(--medium-brown);
+  line-height: 1.9;
+}
+
+.exhibition-date {
+  color: var(--soft-brown);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+/* 캐러셀 섹션 */
+.carousel-section {
+  background: linear-gradient(
+    180deg,
+    var(--soft-beige) 0%,
+    var(--warm-cream) 100%
+  );
+  padding: 5rem 2rem 4rem;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 1200px;
+}
+
+/* 라디오 버튼 숨기기 */
+.carousel-container input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 캐러셀 메인 컨테이너 */
+.carousel {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+.carousel-track {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 캐러셀 아이템 기본 스타일 */
+.carousel-item {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  transition: var(--transition-smooth);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px var(--shadow-medium);
+  opacity: 0;
+  transform: translateX(0) scale(0.5);
+  z-index: 1;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: var(--transition-smooth);
+}
+
+/* 슬라이드 1이 선택되었을 때 */
+#slide1:checked ~ .carousel .carousel-track .carousel-item:nth-child(1) {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 3;
+  box-shadow: 0 40px 100px var(--shadow-strong);
+}
+
+#slide1:checked ~ .carousel .carousel-track .carousel-item:nth-child(2) {
+  transform: translateX(450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide1:checked ~ .carousel .carousel-track .carousel-item:nth-child(4) {
+  transform: translateX(-450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide1:checked ~ .carousel .carousel-track .carousel-item:nth-child(3) {
+  transform: translateX(900px) scale(0.6);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* 슬라이드 2가 선택되었을 때 */
+#slide2:checked ~ .carousel .carousel-track .carousel-item:nth-child(2) {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 3;
+  box-shadow: 0 40px 100px var(--shadow-strong);
+}
+
+#slide2:checked ~ .carousel .carousel-track .carousel-item:nth-child(3) {
+  transform: translateX(450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide2:checked ~ .carousel .carousel-track .carousel-item:nth-child(1) {
+  transform: translateX(-450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide2:checked ~ .carousel .carousel-track .carousel-item:nth-child(4) {
+  transform: translateX(-900px) scale(0.6);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* 슬라이드 3이 선택되었을 때 */
+#slide3:checked ~ .carousel .carousel-track .carousel-item:nth-child(3) {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 3;
+  box-shadow: 0 40px 100px var(--shadow-strong);
+}
+
+#slide3:checked ~ .carousel .carousel-track .carousel-item:nth-child(4) {
+  transform: translateX(450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide3:checked ~ .carousel .carousel-track .carousel-item:nth-child(2) {
+  transform: translateX(-450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide3:checked ~ .carousel .carousel-track .carousel-item:nth-child(1) {
+  transform: translateX(-900px) scale(0.6);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* 슬라이드 4가 선택되었을 때 */
+#slide4:checked ~ .carousel .carousel-track .carousel-item:nth-child(4) {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 3;
+  box-shadow: 0 40px 100px var(--shadow-strong);
+}
+
+#slide4:checked ~ .carousel .carousel-track .carousel-item:nth-child(1) {
+  transform: translateX(450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide4:checked ~ .carousel .carousel-track .carousel-item:nth-child(3) {
+  transform: translateX(-450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide4:checked ~ .carousel .carousel-track .carousel-item:nth-child(2) {
+  transform: translateX(-900px) scale(0.6);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* 슬라이드 5가 선택되었을 때 */
+#slide5:checked ~ .carousel .carousel-track .carousel-item:nth-child(5) {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 3;
+  box-shadow: 0 40px 100px var(--shadow-strong);
+}
+
+#slide5:checked ~ .carousel .carousel-track .carousel-item:nth-child(1) {
+  transform: translateX(450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide5:checked ~ .carousel .carousel-track .carousel-item:nth-child(4) {
+  transform: translateX(-450px) scale(0.8);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+#slide5:checked ~ .carousel .carousel-track .carousel-item:nth-child(3) {
+  transform: translateX(-900px) scale(0.6);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+#slide5:checked ~ .carousel .carousel-track .carousel-item:nth-child(2) {
+  transform: translateX(900px) scale(0.6);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* 자동 순환 애니메이션 - 각 슬라이드가 4초씩 표시 */
+#slide1 {
+  animation: slide-auto 20s infinite;
+}
+
+#slide2 {
+  animation: slide-auto 20s 4s infinite;
+}
+
+#slide3 {
+  animation: slide-auto 20s 8s infinite;
+}
+
+#slide4 {
+  animation: slide-auto 20s 12s infinite;
+}
+
+#slide5 {
+  animation: slide-auto 20s 16s infinite;
+}
+
+@keyframes slide-auto {
+  0%,
+  23% {
+    opacity: 0;
+  }
+  25%,
+  48% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 내비게이션 도트 */
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 3rem;
+  z-index: 10;
+  position: relative;
+}
+
+.carousel-nav label {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--soft-brown);
+  opacity: 0.4;
+  cursor: pointer;
+  transition: var(--transition-quick);
+  position: relative;
+}
+
+.carousel-nav label::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--soft-brown);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-nav label:hover {
+  opacity: 0.7;
+  transform: scale(1.2);
+}
+
+.carousel-nav label:hover::before {
+  opacity: 0.3;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#slide1:checked ~ .carousel-nav label:nth-child(1),
+#slide2:checked ~ .carousel-nav label:nth-child(2),
+#slide3:checked ~ .carousel-nav label:nth-child(3),
+#slide4:checked ~ .carousel-nav label:nth-child(4),
+#slide5:checked ~ .carousel-nav label:nth-child(5) {
+  opacity: 1;
+  background: var(--deep-brown);
+  transform: scale(1.4);
+}
+
+#slide1:checked ~ .carousel-nav label:nth-child(1)::before,
+#slide2:checked ~ .carousel-nav label:nth-child(2)::before,
+#slide3:checked ~ .carousel-nav label:nth-child(3)::before,
+#slide4:checked ~ .carousel-nav label:nth-child(4)::before,
+#slide5:checked ~ .carousel-nav label:nth-child(5)::before {
+  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 갤러리 섹션 */
+.gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* 작품 카드 기본 스타일 */
+.artwork {
+  margin-bottom: 6rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  box-shadow: 0 15px 50px var(--shadow-soft);
+  transition: var(--transition-quick);
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+/* 카드에 수채화 느낌의 배경 효과 */
+.artwork::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(244, 213, 195, 0.15) 0%,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(159, 184, 157, 0.1) 0%,
+      transparent 40%
+    );
+  pointer-events: none;
+  transition: var(--transition-quick);
+}
+
+.artwork:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 80px var(--shadow-medium);
+}
+
+.artwork:hover::before {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.artwork figure {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  margin: 0;
+}
+
+/* 첫 번째 작품 - 좌우 분할 (이미지 왼쪽, 텍스트 오른쪽) */
+.artwork:nth-child(1) {
+  padding: 0;
+  overflow: hidden;
+}
+
+.artwork:nth-child(1) figure {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.artwork:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.artwork:nth-child(1) figcaption {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--warm-cream) 0%,
+    var(--sunset-peach) 100%
+  );
+}
+
+/* 두 번째 작품 - 상하 분할 (이미지 위, 텍스트 아래) */
+.artwork:nth-child(2) {
+  padding: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: 2rem;
+}
+
+.artwork:nth-child(2) figure {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.artwork:nth-child(2) img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 0;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.artwork:nth-child(2) figcaption {
+  padding: 2.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--soft-beige) 0%,
+    var(--light-peach) 100%
+  );
+}
+
+/* 세 번째 작품 - 우좌 분할 (텍스트 왼쪽, 이미지 오른쪽) */
+.artwork:nth-child(3) {
+  padding: 0;
+  margin-left: 2rem;
+  margin-right: auto;
+}
+
+.artwork:nth-child(3) figure {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.artwork:nth-child(3) figcaption {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--sunset-peach) 0%,
+    var(--warm-cream) 100%
+  );
+  order: 1;
+}
+
+.artwork:nth-child(3) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  order: 2;
+}
+
+/* 네 번째 작품 - 겹치는 레이아웃 (이미지 배경, 텍스트 오버레이) */
+.artwork:nth-child(4) {
+  padding: 0;
+  position: relative;
+  height: 600px;
+  max-width: 700px;
+  margin: 0 auto 6rem auto;
+}
+
+.artwork:nth-child(4) figure {
+  position: relative;
+  height: 100%;
+}
+
+.artwork:nth-child(4) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.artwork:nth-child(4) figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: white;
+  padding: 4rem 3rem 3rem;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.artwork:nth-child(4) figcaption h2 {
+  color: white;
+}
+
+.artwork:nth-child(4) figcaption h2::after {
+  background: linear-gradient(
+    90deg,
+    var(--warm-terracotta),
+    var(--sunset-peach)
+  );
+}
+
+.artwork:nth-child(4) .artwork-description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.artwork:nth-child(4) .info {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 다섯 번째 작품 - 원형 플로팅 레이아웃 (이미지 위, 텍스트 아래) */
+.artwork:nth-child(5) {
+  padding: 3rem;
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto 6rem auto;
+  background: radial-gradient(
+    circle at center,
+    var(--warm-cream) 20%,
+    var(--soft-beige) 100%
+  );
+}
+
+.artwork:nth-child(5) figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.artwork:nth-child(5) img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 20px 60px var(--shadow-strong);
+  border: 8px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+}
+
+.artwork:nth-child(5) figcaption {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.artwork:nth-child(5) figcaption h2 {
+  font-size: 2.2rem;
+  color: var(--deep-brown);
+  margin: 0 0 1.5rem 0;
+}
+
+.artwork:nth-child(5) .artwork-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--medium-brown);
+  margin: 0 0 1rem 0;
+}
+
+.artwork:nth-child(5) .info {
+  font-size: 0.85rem;
+  color: var(--soft-brown);
+  margin: 0;
+}
+
+.artwork:nth-child(5):hover img {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 30px 80px var(--shadow-strong);
+}
+
+/* 기본 이미지 스타일 리셋 */
+.artwork img {
+  transition: var(--transition-quick);
+}
+
+.artwork:hover img {
+  transform: scale(1.02);
+}
+
+/* 작품 설명 스타일 */
+.artwork figcaption {
+  text-align: left;
+}
+
+.artwork figcaption h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--deep-brown);
+  position: relative;
+}
+
+.artwork figcaption h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--warm-terracotta),
+    var(--sunset-peach)
+  );
+  border-radius: 2px;
+}
+
+.artwork-description {
+  font-size: 1.15rem;
+  color: var(--medium-brown);
+  line-height: 2;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.info {
+  font-size: 1rem;
+  color: var(--soft-brown);
+  opacity: 0.8;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.artwork .info {
+  font-size: 1rem;
+  color: var(--soft-brown);
+  opacity: 0.8;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* 푸터 스타일 */
+footer {
+  margin-top: 5rem;
+  background: linear-gradient(
+    135deg,
+    var(--deep-brown) 0%,
+    var(--medium-brown) 100%
+  );
+  color: var(--warm-cream);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(244, 213, 195, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(159, 184, 157, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+footer * {
+  position: relative;
+  z-index: 1;
+}
+
+.artist-info {
+  max-width: 800px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.artist-info h3 {
+  color: var(--warm-cream);
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.artist-description {
+  color: rgba(255, 248, 240, 0.9);
+  line-height: 2;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-info {
+  margin-bottom: 2.5rem;
+}
+
+.contact-info p {
+  color: rgba(255, 248, 240, 0.8);
+  margin-bottom: 0.7rem;
+  font-size: 1rem;
+}
+
+.contact-info strong {
+  color: var(--warm-cream);
+  font-weight: 500;
+}
+
+.copyright {
+  color: rgba(255, 248, 240, 0.6);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 248, 240, 0.2);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  font-weight: 300;
+}
+
+/* 반응형 디자인 */
+
+/* 태블릿 (768px - 1199px) */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+  .carousel {
+    height: 500px;
+  }
+
+  .carousel-item {
+    width: 400px;
+    height: 400px;
+  }
+
+  #slide1:checked ~ .carousel .carousel-track .carousel-item:nth-child(2),
+  #slide1:checked ~ .carousel .carousel-track .carousel-item:nth-child(4),
+  #slide2:checked ~ .carousel .carousel-track .carousel-item:nth-child(3),
+  #slide2:checked ~ .carousel .carousel-track .carousel-item:nth-child(1),
+  #slide3:checked ~ .carousel .carousel-track .carousel-item:nth-child(4),
+  #slide3:checked ~ .carousel .carousel-track .carousel-item:nth-child(2),
+  #slide4:checked ~ .carousel .carousel-track .carousel-item:nth-child(1),
+  #slide4:checked ~ .carousel .carousel-track .carousel-item:nth-child(3) {
+    transform: translateX(350px) scale(0.75);
+  }
+
+  #slide1:checked ~ .carousel .carousel-track .carousel-item:nth-child(4),
+  #slide2:checked ~ .carousel .carousel-track .carousel-item:nth-child(1),
+  #slide3:checked ~ .carousel .carousel-track .carousel-item:nth-child(2),
+  #slide4:checked ~ .carousel .carousel-track .carousel-item:nth-child(3) {
+    transform: translateX(-350px) scale(0.75);
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  header {
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .artwork {
+    padding: 2.5rem;
+  }
+
+  .artwork figcaption h2 {
+    font-size: 1.9rem;
+  }
+
+  /* 태블릿에서 레이아웃 조정 */
+  .artwork:nth-child(1) figure {
+    grid-template-columns: 50% 50%;
+  }
+
+  .artwork:nth-child(2) {
+    max-width: 500px;
+    margin-right: 1rem;
+  }
+
+  .artwork:nth-child(3) {
+    margin-left: 1rem;
+  }
+
+  .artwork:nth-child(3) figure {
+    grid-template-columns: 50% 50%;
+  }
+
+  .artwork:nth-child(4) {
+    max-width: 600px;
+    height: 500px;
+  }
+
+  .artwork figcaption {
+    padding: 2.5rem;
+  }
+
+  .artwork:nth-child(1) figcaption,
+  .artwork:nth-child(3) figcaption {
+    padding: 2.5rem;
+  }
+}
+
+/* 모바일 (767px 이하) */
+@media screen and (max-width: 767px) {
+  .carousel {
+    height: 350px;
+  }
+
+  .carousel-item {
+    width: 280px;
+    height: 280px;
+  }
+
+  /* 모바일에서는 중앙 이미지만 보이고 양 옆은 완전히 숨김 */
+  .carousel-item {
+    opacity: 0;
+    transform: translateX(0) scale(0.8);
+  }
+
+  #slide1:checked ~ .carousel .carousel-track .carousel-item:nth-child(1),
+  #slide2:checked ~ .carousel .carousel-track .carousel-item:nth-child(2),
+  #slide3:checked ~ .carousel .carousel-track .carousel-item:nth-child(3),
+  #slide4:checked ~ .carousel .carousel-track .carousel-item:nth-child(4),
+  #slide5:checked ~ .carousel .carousel-track .carousel-item:nth-child(5) {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    z-index: 3;
+  }
+
+  header {
+    padding: 3rem 1.5rem 2.5rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .exhibition-description {
+    font-size: 1rem;
+  }
+
+  .carousel-section {
+    padding: 3rem 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .gallery {
+    padding: 1rem;
+  }
+
+  /* 모바일에서 모든 작품을 세로 레이아웃으로 통일 */
+  .artwork {
+    margin-bottom: 3rem;
+    padding: 0;
+    border-radius: 20px;
+    min-height: auto;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: none !important;
+    height: auto !important;
+  }
+
+  .artwork:nth-child(1) figure,
+  .artwork:nth-child(3) figure {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+  }
+
+  .artwork:nth-child(1) img,
+  .artwork:nth-child(2) img,
+  .artwork:nth-child(3) img,
+  .artwork:nth-child(4) img {
+    height: 250px;
+    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .artwork:nth-child(1) figcaption,
+  .artwork:nth-child(2) figcaption,
+  .artwork:nth-child(3) figcaption {
+    order: 2;
+    padding: 2rem;
+  }
+
+  .artwork:nth-child(4) figcaption {
+    position: static;
+    background: linear-gradient(
+      135deg,
+      var(--soft-beige) 0%,
+      var(--light-peach) 100%
+    );
+    color: var(--text-dark);
+    padding: 2rem;
+  }
+
+  .artwork:nth-child(4) figcaption h2 {
+    color: var(--deep-brown);
+  }
+
+  .artwork:nth-child(4) .artwork-description {
+    color: var(--medium-brown);
+  }
+
+  .artwork:nth-child(4) .info {
+    color: var(--soft-brown);
+  }
+
+  /* 5번째 작품 모바일 레이아웃 */
+  .artwork:nth-child(5) {
+    padding: 2rem;
+    min-height: auto;
+  }
+
+  .artwork:nth-child(5) figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .artwork:nth-child(5) img {
+    width: 250px;
+    height: 250px;
+    position: static;
+    margin-bottom: 2rem;
+  }
+
+  .artwork:nth-child(5) figcaption {
+    position: static;
+    padding: 0;
+    text-align: center;
+  }
+
+  .artwork:nth-child(5) figcaption h2,
+  .artwork:nth-child(5) .artwork-description,
+  .artwork:nth-child(5) .info {
+    position: static;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+
+  .artwork:nth-child(5) figcaption h2 {
+    font-size: 1.8rem;
+  }
+
+  .artwork figcaption h2 {
+    font-size: 1.7rem;
+  }
+
+  .artwork-description {
+    font-size: 1rem;
+  }
+
+  footer {
+    padding: 3rem 1.5rem 2rem;
+  }
+
+  .artist-info {
+    text-align: left;
+  }
+}
+
+/* 초대형 데스크톱 (1600px 이상) */
+@media screen and (min-width: 1600px) {
+  .carousel-item {
+    width: 600px;
+    height: 600px;
+  }
+
+  .carousel {
+    height: 700px;
+  }
+}
+
+/* 접근성 개선 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  #slide1,
+  #slide2,
+  #slide3,
+  #slide4 {
+    animation: none;
+  }
+}
+
+/* 인쇄용 스타일 */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .carousel-section {
+    display: none;
+  }
+
+  .artwork {
+    background: white;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+    margin-bottom: 2rem;
+  }
+
+  .artwork::before {
+    display: none;
+  }
+
+  footer {
+    background: white;
+    color: black;
+    border-top: 2px solid #333;
+  }
+}
+
+/* 포커스 및 접근성 스타일 */
+.carousel-nav label:focus {
+  outline: 3px solid var(--warm-terracotta);
+  outline-offset: 3px;
+}
+
+.artwork:focus-within {
+  outline: 2px solid var(--warm-terracotta);
+  outline-offset: 5px;
+}
+
+img:focus {
+  outline: 2px solid var(--warm-terracotta);
+  outline-offset: 3px;
+}
+
+/* 호버 효과 디테일 */
+.artwork img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: var(--transition-quick);
+  pointer-events: none;
+}
+
+.artwork:hover img::after {
+  opacity: 1;
+  animation: shimmer 1.5s ease-in-out;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}

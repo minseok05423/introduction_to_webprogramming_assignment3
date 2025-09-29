@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>성률</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- 전시회 헤더 섹션 -->
+    <header>
+      <h1>추억의 재구성</h1>
+      <p class="exhibition-subtitle">recollection of memories</p>
+      <p class="artist-name">성률 작가</p>
+      <p class="exhibition-description">
+        "저는 종종 뜨겁고 눈부신 햇빛보다 그늘 속에서 편안함을 느꼈습니다.
+        <br />그곳에 있을 땐 고양이처럼 자신만의 비밀공간을 가진 것같은 안온한
+        마음이 들었고, <br />그늘은 휴식처를 제공하고 다음 햇빛을 향해 나갈 수
+        있도록 저를 식혀줍니다."
+      </p>
+      <p class="info">성률 작가, 개인전 "뜨거운 햇빛과 서늘한 그늘" 中</p>
+    </header>
+
+    <!-- 메인 전시 공간 -->
+    <main>
+      <!-- 캐러셀 섹션 (최상단) -->
+      <section class="carousel-section">
+        <div class="carousel-container">
+          <!-- 라디오 버튼으로 캐러셀 제어 (숨김 처리) -->
+          <input type="radio" name="carousel" id="slide1" checked />
+          <input type="radio" name="carousel" id="slide2" />
+          <input type="radio" name="carousel" id="slide3" />
+          <input type="radio" name="carousel" id="slide4" />
+          <input type="radio" name="carousel" id="slide5" />
+
+          <div class="carousel">
+            <div class="carousel-track">
+              <div class="carousel-item">
+                <img
+                  src="./assets/1.jpg"
+                  alt="창가에서 휴식하는 사람, 햇살이 들어오는 침실의 평화로운 오후"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="./assets/2.jpg"
+                  alt="나무 그늘 아래 골목길을 함께 걷는 두 사람과 그들을 따르는 고양이"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="./assets/3.jpg"
+                  alt="화분들과 나무가 있는 동네 풍경, 고양이가 평온하게 쉬고 있다"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="./assets/4.jpg"
+                  alt="가을 은행나무 아래 낙엽 가득한 길에서 함께 웃는 세 친구"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="./assets/5.jpg"
+                  alt="하얀 눈이 내린 고요한 겨울 풍경"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- 캐러셀 내비게이션 도트 -->
+          <div class="carousel-nav">
+            <label for="slide1" aria-label="첫 번째 작품 보기"></label>
+            <label for="slide2" aria-label="두 번째 작품 보기"></label>
+            <label for="slide3" aria-label="세 번째 작품 보기"></label>
+            <label for="slide4" aria-label="네 번째 작품 보기"></label>
+            <label for="slide5" aria-label="다섯 번째 작품 보기"></label>
+          </div>
+        </div>
+      </section>
+
+      <!-- 작품 상세 섹션 -->
+      <section class="gallery">
+        <article class="artwork">
+          <figure>
+            <img
+              src="./assets/1.jpg"
+              alt="창가에서 휴식하는 사람, 햇살이 들어오는 침실의 평화로운 오후"
+            />
+            <figcaption>
+              <h2>창가의 오후</h2>
+              <p class="artwork-description">
+                햇살이 창문을 통해 조용히 들어오는 평화로운 오후. 부드러운 빛
+                속에서 누군가의 소중한 휴식 시간이 흘러갑니다.
+              </p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="artwork">
+          <figure>
+            <img
+              src="./assets/2.jpg"
+              alt="나무 그늘 아래 골목길을 함께 걷는 두 사람과 그들을 따르는 고양이"
+            />
+            <figcaption>
+              <h2>함께 걷는 길</h2>
+              <p class="artwork-description">
+                나무 그늘이 시원한 골목길을 함께 걷는 두 사람. 그들의 발걸음을
+                따라가는 작은 친구도 있습니다. 특별할 것 없는 일상이지만,
+                함께라서 더욱 소중한 순간입니다.
+              </p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="artwork">
+          <figure>
+            <img
+              src="./assets/3.jpg"
+              alt="화분들과 나무가 있는 동네 풍경, 고양이가 평온하게 쉬고 있다"
+            />
+            <figcaption>
+              <h2>동네 한 켠</h2>
+              <p class="artwork-description">
+                정성스럽게 가꾼 화분들과 푸르른 나무 아래, 고양이 한 마리가
+                평온한 낮잠을 즐기고 있습니다. 바쁜 일상 속에서도 이런 평화로운
+                공간이 있어 다행입니다.
+              </p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="artwork">
+          <figure>
+            <img
+              src="./assets/4.jpg"
+              alt="가을 은행나무 아래 낙엽 가득한 길에서 함께 웃는 세 친구"
+            />
+            <figcaption>
+              <h2>가을의 우정</h2>
+              <p class="artwork-description">
+                노란 은행나무 아래, 낙엽이 가득한 길 위에서 세 친구가 함께 웃고
+                있습니다. 계절이 바뀌어도 변하지 않는 따뜻한 우정이 있어
+                행복합니다.
+              </p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="artwork">
+          <figure>
+            <img src="./assets/5.jpg" alt="하얀 눈이 내린 고요한 겨울 풍경" />
+            <figcaption>
+              <h2>겨울의 고요</h2>
+              <p class="artwork-description">
+                하얀 눈이 세상을 조용히 덮은 겨울날.<br />
+                모든 것이 순수하고 평온해 보이는 이 순간, <br />자연의 아름다운
+                침묵 속에서 마음도 차분해집니다.
+              </p>
+            </figcaption>
+          </figure>
+        </article>
+      </section>
+    </main>
+
+    <!-- 작가 정보 및 연락처 -->
+    <footer>
+      <section class="artist-info">
+        <h3>작가 소개</h3>
+        <p class="artist-description">
+          성률 작가님은 일상의 작은 순간들을 수채화처럼 따뜻하게 담아내는
+          작가입니다. <br />
+          창가의 햇살, 함께 걷는 골목길, 동네의 평온한 풍경을 통해 <br />바쁜
+          현대 생활 속에서 잊고 있었던 소중한 추억들을 환기합니다.
+        </p>
+        <div class="contact-info">
+          <p>인스타그램: @sseongryul</p>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
+
+<!--
+시맨틱 HTML 구조 설계 설명 (아늑한 일러스트 스타일):
+
+1. <header>: 따뜻한 전시 제목과 수채화 감성의 소개글로 첫인상을 형성합니다.
+
+2. <main>: 캐러셀과 갤러리 두 섹션으로 구성된 메인 콘텐츠 영역입니다.
+   - 캐러셀 섹션: 자동 순환하며 작품을 미리보기로 소개
+   - 갤러리 섹션: 각 작품의 상세한 정보와 감성적 설명 제공
+
+3. 캐러셀 구조:
+   - input[type="radio"]: JavaScript 없이 순수 CSS로 캐러셀 제어
+   - label: 접근성을 위한 aria-label 속성 추가
+   - 라디오 버튼과 CSS 선택자를 활용한 상태 관리
+
+4. <article class="artwork">: 각 작품을 독립적인 아티클로 처리하여 의미적 완결성 확보
+
+5. <figure>와 <figcaption>: 이미지와 감성적 설명을 의미적으로 연결
+   - 따뜻한 톤의 작품 제목과 일상적 언어로 작성된 설명
+   - 단순한 정보(촬영일, 장소) 형태로 친근감 조성
+
+6. heading 계층 구조:
+   - h1: 전시 제목 "일상의 따뜻한 순간들"
+   - h2: 각 작품의 감성적 제목
+   - h3: 작가 소개
+
+7. 접근성 고려사항:
+   - 상세한 alt 속성으로 이미지의 분위기와 내용 설명
+   - aria-label로 캐러셀 내비게이션의 의미 명시
+   - 시맨틱 태그를 통한 명확한 문서 구조
+-->
